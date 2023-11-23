@@ -11,6 +11,11 @@ class authController extends Controller
         return view('layouts.registo');
     }
 
+    public function login()
+    {
+        return view('layouts.login');
+    }
+
     public function index()
     {
         return view('index');
