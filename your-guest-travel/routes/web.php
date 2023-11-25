@@ -1,9 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\authController;
+use App\Http\Controllers\HomeController;
+
+Route::get('/', function (){
+    return view('welcome');
+});
 
 
-Route::get('/home', [authController::class, 'index']);
-Route::get('/registo', [authController::class, 'registo']);
-Route::get('/', [authController::class, 'login']);
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')
+->middleware('is_admin');

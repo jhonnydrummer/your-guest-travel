@@ -1,2 +1,2 @@
-@extends('layouts.main')
+@extends('auth.login')
 
