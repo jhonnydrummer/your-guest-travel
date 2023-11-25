@@ -29,7 +29,7 @@
                                                            style="width: 45%"></a>
 
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown" href="#">Config. Perfil</a></li>
+                    <li><a class="dropdown"  href='#'>Config. Perfil</a></li>
                     <li><a class="dropdown" href="#">Link 2</a></li>
                     <li><a class="dropdown" href="#"><img class="icone-perfil" src="img/logout.png" alt="logout"
                                                           style="width: 35%">Logout</a></li>

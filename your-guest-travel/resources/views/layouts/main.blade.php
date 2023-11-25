@@ -19,9 +19,10 @@
 <body>
 
 @include('includes.header')
-<main class="container mt-4">
+<main>
 @yield('content')
 </main>
+@include('includes.secao_abas')
 @include('includes.footer')
 
 
