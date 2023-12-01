@@ -55,6 +55,7 @@
                             <div class="col-md-6">
                                 <input placeholder="Confirme a Palavra-passe" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
+
                         </div>
 
                         <div class="roww">
@@ -63,6 +64,7 @@
                                 </button>
 
                         </div>
+                        <a class="fazer_login_link" href="/login">Já tenho conta</a>
                     </form>
                 </div>
             </div>
