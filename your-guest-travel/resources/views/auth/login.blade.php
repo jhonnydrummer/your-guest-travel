@@ -58,7 +58,7 @@
                                         {{ __('Esqueceu palavra-passe?') }}
                                     </a>
                                 @endif
-
+                                <a class="nao_tenho_conta_link" href="/register">Não tenho conta. Registar</a>
                             </div>
                         </form>
                     </div>

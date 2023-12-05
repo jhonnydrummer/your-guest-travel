@@ -6,35 +6,42 @@ body{
     overflow: hidden;
     background-image: url('../img/fundo-registo-login.jpg');
     background-size: cover;
+}
+
+.card{
     display: flex;
     justify-content: center;
 }
 
-
 img{
-   width: 40%;
-    margin-left: 25%;
+   width: 30%;
+    margin-left: 35%;
+    margin-top: 5%;
     margin-bottom: 20px;
 }
 
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-    font-size: 1rem;
-    line-height: 2.15;
-    padding-left: .75em;
-    padding-right: .75em;
-}
-.card-registration .select-arrow {
-    top: 13px;
-}
-.btn{
-    width: 100%;
-    background-color: #222FE6;
+.roww{
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
 }
 
-.btn:hover{
+.btn_registar{
+    width: 48%;
+    height: 40px;
+    background-color: #222FE6;
+    color: white;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 1%;
+}
+
+.btn_registar:hover{
     background-color: #111773;
 }
-body, html {
-    height: 100%;
-    background-repeat: no-repeat;
+
+.fazer_login_link{
+    margin-left: 43%;
 }
+
