@@ -6,8 +6,9 @@
 <body>
 <h1>{{$title}}</h1>
 <p>{{$date}}</p>
+
 <p>
-    Obrigado por baixar a Fatura Online. Com isso você economiza.
+    Obrigado pela compra!
 </p>
 </body>
 </html>

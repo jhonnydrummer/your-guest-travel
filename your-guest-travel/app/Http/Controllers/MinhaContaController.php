@@ -9,7 +9,7 @@ class MinhaContaController extends Controller
 {
     public function minhaConta()
     {
-        // Lógica para a página "Minha Conta"
+        if(auth()->check())
         return view('layouts/minhaConta'); // O nome 'minha_conta' deve ser o nome do arquivo da view correspondente
     }
 }
