@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -26,7 +27,7 @@ class PhotoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
        $request->validate([
            'image'=> 'required|image|mimes:jpg,png,jpeg,gif, svg|max:2048',
@@ -69,8 +70,20 @@ class PhotoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Photo $photo)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
-        //
+        $picture = Photo::find($id);
+
+        if ($picture) {
+            // Excluir o arquivo do armazenamento
+            Storage::delete('public/images/'.$picture->path);
+
+            // Excluir o registro do banco de dados
+            $picture->delete();
+
+            return redirect()->back()->with('status', 'Imagem excluída com sucesso');
+        } else {
+            return redirect()->back()->with('error', 'Imagem não encontrada');
+        }
     }
 }

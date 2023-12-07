@@ -11,7 +11,6 @@ Route::get('/', function (){
     return view('welcome');
 });
 
-
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -25,3 +24,5 @@ Route::post('save', [PhotoController::class, 'store'])->name('upload.picture')
 Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
 
 Route::get('/minhaConta', [minhaContaController::class, 'minhaConta'])->name('minhaConta');
+
+Route::delete('/photos/{id}', [PhotoController::class, 'destroy'])->name('destroy.picture');

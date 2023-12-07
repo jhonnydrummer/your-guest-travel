@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Photo extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'name', 'path'
+    ];
+
+    // Inicialização da propriedade
+    protected string $path = '';
+
+    // Restante do código da classe...
 }
