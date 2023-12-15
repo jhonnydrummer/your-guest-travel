@@ -15,24 +15,33 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->decimal('price', 8, 2); // Preço com 8 dígitos, 2 casas decimais
-            $table->string('sku'); // Quantidade do produto
-            $table->unsignedBigInteger('category_id'); // Chave estrangeira para a tabela de categorias
-            $table->unsignedBigInteger('photo_id')->nullable(); // Referência para a tabela de fotos, pode ser nulo
+            $table->decimal('price', 8, 2);
+            $table->integer('sku');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
-                ->onDelete('cascade'); // Se a categoria for excluída, os produtos associados também serão excluídos
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
         });
 
-        Schema::table('products', function (Blueprint $table) {
-            $table->foreign('photo_id')
+        Schema::create('photos', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('product_id');
+            $table->string('path');
+            $table->timestamps();
+
+            $table->foreign('product_id')
                 ->references('id')
-                ->on('photos')
-                ->onDelete('set null'); // Define a ação 'set null' para a chave estrangeira de fotos
+                ->on('products')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE'); // Se um produto for deletado, as fotos associadas serão deletadas também
         });
+
+
+
     }
 
     /**
@@ -40,6 +49,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('photos');
         Schema::dropIfExists('products');
     }
+
 };

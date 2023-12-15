@@ -20,8 +20,12 @@ return new class extends Migration
             $table->timestamps();
 
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id', 'user_id_fk')
+                ->references('id')
+                ->on('users');
+            $table->foreign('product_id', 'product_id_fk')
+                ->references('id')
+                ->on('products');
         });
     }
 

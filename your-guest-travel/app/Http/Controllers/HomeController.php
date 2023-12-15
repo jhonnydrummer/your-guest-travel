@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Photo;
+use App\Models\Product;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
@@ -23,11 +24,11 @@ class HomeController extends Controller
      *
      * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
-        $pictures = Photo::all(); //Busca todas as fotos
-        return view('home', compact('pictures')); //Envia para a viewer com este nome 'pictures'
 
+        $products = Product::all();
+        return view('home', compact('products'));
     }
 
     public function adminHome(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application

@@ -20,10 +20,18 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign key constraints
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('payment_id')->references('id')->on('payments');
-            $table->foreign('invoice_id')->references('id')->on('invoices');
+            $table->foreign('user_id', 'users_id_fk')
+                ->references('id')
+                ->on('users');
+            $table->foreign('product_id', 'products_id_fk')
+                ->references('id')
+                ->on('products');
+            $table->foreign('payment_id', 'payment_id_fk')
+                ->references('id')
+                ->on('payments');
+            $table->foreign('invoice_id', 'invoice_id_fk')
+                ->references('id')
+                ->on('invoices');
         });
     }
 

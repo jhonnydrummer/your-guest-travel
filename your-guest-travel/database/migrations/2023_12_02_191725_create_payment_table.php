@@ -21,10 +21,22 @@ return new class extends Migration
             $table->string('status');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('payment_method_id')->references('id')->on('paymentMethods')->onDelete('cascade');
-            $table->foreign('products_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
+            $table->foreign('user_id', 'user_id_fk')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+            $table->foreign('payment_method_id', 'payment_method_fk')
+                ->references('id')
+                ->on('paymentMethods')
+                ->onDelete('cascade');
+            $table->foreign('products_id', 'products_id_fk')
+                ->references('id')
+                ->on('products')
+                ->onDelete('cascade');
+            $table->foreign('invoice_id', 'invoices_id_fk')
+                ->references('id')
+                ->on('invoices')
+                ->onDelete('cascade');
         });
     }
 
