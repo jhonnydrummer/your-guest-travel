@@ -3,13 +3,19 @@
         <div class="product">
             <label class="product-info">
                 @foreach($product->photos as $photo)
-                    <div class="col-md-4">
-                        <img src="{{ asset('storage/images/' . $photo->path) }}" alt="{{$photo->name}}">
+                        <?php
+                        $string = $photo->path;
+                        $remove = 6;
+                        $inicio = 0; // posição inicial da string
+
+                        $novoPath = substr($string, $inicio + $remove);
+                        ?>
+                    <div class=".image-item">
+                        <img src="{{ url('storage'.$novoPath) }}" alt="{{$photo->name}}">
                     </div>
                 @endforeach
 
-                <h4>{{ $product->name }}</h4>
-                {{ $product->description }}
+                <h4 class="name_product">{{ $product->name }}</h4>
                 <a class="price-label">€ {{ $product->price }}</a>
                 <p>Disponibilidade: {{ $product->sku }}</p>
             </label>
@@ -25,6 +31,12 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
+        }
+        .name_product{
+            background-color: #026fff;
+            color: white;
+            padding-bottom: 5px;
+            padding-top: 5px;
         }
 
         .image-item {
@@ -49,7 +61,7 @@
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             padding: 15px;
             width: 250px;
-            margin: 15px;
+            margin: 10px;
             display: block;
             background-color: white;
         }
