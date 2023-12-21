@@ -1,3 +1,7 @@
+   <?php
+   use App\Models\Product;
+   $products = Product::all();
+   ?>
 
     @foreach($products as $product)
         <div class="product">
@@ -6,26 +10,48 @@
                         <?php
                         $string = $photo->path;
                         $remove = 6;
-                        $inicio = 0; // posição inicial da string
+                        $inicio = 0;
 
                         $novoPath = substr($string, $inicio + $remove);
                         ?>
+
+
                     <div class=".image-item">
                         <img src="{{ url('storage'.$novoPath) }}" alt="{{$photo->name}}">
+                       <div class="heart-favorites">
+                           @include('partials.favorite')
+                       </div>
                     </div>
+
                 @endforeach
 
                 <h4 class="name_product">{{ $product->name }}</h4>
                 <a class="price-label">€ {{ $product->price }}</a>
                 <p>Disponibilidade: {{ $product->sku }}</p>
             </label>
-            <button type="submit" class="btn btn-primary">Ver mais</button>
-
+            <div class="btn-verMais_addCarrinho">
+            <button type="submit" class="btn_ver_mais" id="btn_ver_mais">Ver mais</button>
+            <form method="POST" action="{{ route('cart.add') }}">
+                @csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="btn-add-cart" id="btn-add-cart"><img class="icon-cart-white" src="{{ asset('img/icon-cart-white.png') }}" alt="icon"><p>Adicionar</p></button>
+            </form>
+            </div>
         </div>
+
     @endforeach
 
 
         <style>
+
+
+
+        .heart-favorites{
+            display: flex;
+            position: relative;
+            float: right;
+        }
 
         .image-grid {
             display: grid;
@@ -33,10 +59,10 @@
             gap: 20px;
         }
         .name_product{
-            background-color: #026fff;
+            background-color: black;
             color: white;
-            padding-bottom: 5px;
-            padding-top: 5px;
+            padding: 5px;
+            font-size: medium;
         }
 
         .image-item {
@@ -80,20 +106,44 @@
             width: 200px;
         }
 
+        .btn-verMais_addCarrinho{
+            display: flex;
+            justify-content: space-between;
+        }
 
-        .product button {
-            width: 100%;
+        .product #btn_ver_mais {
+            width: 100px;
+            height: 40px;
             background-color: #0B5ED7;
             color: #fff;
             border: none;
             padding: 8px;
-            border-radius: 5px;
+            border-radius: 100px;
             cursor: pointer;
         }
 
-
-        .product button:hover {
+        .product btn_ver_mais:hover {
             background-color: #2980b9;
+        }
+
+        .icon-cart-white{
+            width: 20px;
+        }
+
+        .btn-add-cart{
+            display: flex;
+            justify-content: space-around;
+            width: 100px;
+            height: 40px;
+            background-color: #001a3f;
+            color: #fff;
+            border: none;
+            padding: 8px;
+            border-radius: 100px;
+            cursor: pointer;
+        }
+        button p{
+            font-size: small;
         }
 
  </style>

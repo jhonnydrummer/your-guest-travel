@@ -65,9 +65,6 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 
-
-
-
                 <ul class="navbar-nav ms-auto">
 
                     @guest
@@ -99,10 +96,44 @@
                         @endif
 
                     @else
+                        <!-- Button modal -->
+                        @if(auth()->check() && !auth()->user()->is_admin)
+
+                            <button type="button" class="bnt-cart" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">
+                                <img class="cart-shop" src="{{ asset('img/icon-cart.png') }}" alt="icon-cart">
+                            </button>
+
+                            <!-- Janela Modal do carrinho-->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Carrinho de
+                                                Compras</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @include('cart')
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Fechar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        <!--Fim da Janela Modal do carrinho -->
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <!--{{ Auth::user()->name }}-->
+
                                 <img class="icon-profile" src="{{ asset('img/icon-perfil.png') }}" alt="icon-profile">
 
                             </a>
@@ -147,8 +178,24 @@
 </body>
 </html>
 <style>
+    .modal-content{
+        width: 50vw;
+        height: 80vh;
+        margin-top: 25%;
+        margin-left: 50%;
+    }
     .logomarca_top, .icon-profile {
         width: 40%;
+    }
+
+    .bnt-cart {
+        width: 40px;
+        background-color: white;
+        border: none;
+    }
+
+    .cart-shop {
+        color: #63687C;
     }
 
     #navbarDropdown {
@@ -185,7 +232,7 @@
         width: 100%;
     }
 
-    .name_top{
+    .name_top {
         font-size: small;
         text-decoration: none;
     }

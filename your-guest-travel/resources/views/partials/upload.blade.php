@@ -1,5 +1,5 @@
 <form method="POST" enctype="multipart/form-data" action="{{ route('products.store') }}">
-    @csrf
+@csrf
     <div class="row">
 
         <div class="col-md-12" id="formulario">
@@ -35,8 +35,6 @@
     <div>
         <button type="submit" class="btn btn-primary" id="submit">Enviar</button>
     </div>
-
-
 </form>
 
 

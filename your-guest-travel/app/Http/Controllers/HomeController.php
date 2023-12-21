@@ -26,7 +26,6 @@ class HomeController extends Controller
      */
     public function index(): Renderable
     {
-
         $products = Product::all();
         return view('home', compact('products'));
     }

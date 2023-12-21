@@ -168,6 +168,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Darryldecode\Cart\CartServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
     ])->toArray(),
 
@@ -193,6 +194,8 @@ return [
         'Validator'=> Illuminate\Support\Facades\Validator::class,
         'View'=> Illuminate\Support\Facades\View::class,
         'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+
     ])->toArray(),
 
 ];
