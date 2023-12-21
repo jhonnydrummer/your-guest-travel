@@ -6,7 +6,6 @@
 @endsection
 
 @section('content')
-@include('includes.banner_principal')
 
 @endsection
 

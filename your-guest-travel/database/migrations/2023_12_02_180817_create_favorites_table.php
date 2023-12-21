@@ -14,8 +14,10 @@ class CreateFavoritesTable extends Migration
             $table->unsignedBigInteger('product_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('user_id', 'user_id_fk')->references('id')
+                ->on('users')->onDelete('cascade');
+            $table->foreign('product_id', 'product_id_fk')->references('id')
+                ->on('products')->onDelete('cascade');
 
             // Adicione outras colunas conforme necessário para detalhes do favorito
             // Por exemplo: $table->string('comment')->nullable();

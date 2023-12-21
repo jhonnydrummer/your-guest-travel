@@ -19,8 +19,10 @@ return new class extends Migration
             $table->timestamps();
 
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('set null');
+            $table->foreign('user_id', 'user_id_fk')->references('id')
+                ->on('users')->onDelete('set null');
+            $table->foreign('product_id', 'product_id_fk')->references('id')
+                ->on('products')->onDelete('set null');
         });
     }
 
@@ -29,8 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('invoice', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('invoices');
     }
 };
