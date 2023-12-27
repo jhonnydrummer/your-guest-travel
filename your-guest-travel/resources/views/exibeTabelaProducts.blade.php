@@ -18,6 +18,7 @@ $products = Product::paginate(10);
 
     <?php
     $products = \App\Models\Product::all();
+    $photos = \App\Models\Photo::all();
     ?>
     @foreach($products as $product)
         <tr>
@@ -25,18 +26,22 @@ $products = Product::paginate(10);
             <td>{{ $product->name }}</td>
             <td>{{ $product->price }}</td>
             <td>
-                @if($product->image)
-                    <img src="{{ asset($product->photo_id) }}" alt="Imagem do Produto" width="50">
-                @else
-                    Sem imagem
-                @endif
+                @foreach($product->photos as $photo)
+                        <?php
+                        $string = $photo->path;
+                        $remove = 6;
+                        $inicio = 0;
+                        $novoPath = substr($string, $inicio + $remove);
+                        ?>
+                    <img src="{{ url('storage'.$novoPath) }}" alt="{{$photo->name}}">
+                @endforeach
             </td>
 
             <td>
                 <form method="POST" action="{{ route('products.destroy', ['product' => $product->id]) }}">
                     @csrf
                     @method('DELETE')
-                    <button href="#delete-{{$product->id}}"  type="submit" class="btn_excluir modal-trigger">Excluir</button>
+                    <button onclick="return confirm('Deseja realmente excluir {{$product->name}}?')" href="#delete-{{$product->id}}"  type="submit" class="btn_excluir modal-trigger">Excluir</button>
                 </form>
 
             </td>
@@ -60,6 +65,9 @@ $products = Product::paginate(10);
 
 
 <style>
+    img {
+        width: 50px;
+    }
     tr:nth-child(even) {
         background:lightgray;
     }
@@ -82,9 +90,5 @@ $products = Product::paginate(10);
         color: white;
         margin-top: 13px;
     }
-    .btn_editar{
-        text-decoration: none;
-        background-color: #001a3f;
-        color: white;
-    }
+
 </style>

@@ -39,20 +39,24 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td>€{{ $item->price }}</td>
-                    <td>{{ $item->quantity }}</td>
+                    <td>1</td>
 
                 </tr>
             @endforeach
             </tbody>
 
         </table>
-        <div>
-            <form action="{{ route('checkout') }}" method="POST">
-                @csrf
-                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                <button class="btn-checkout" type="submit">Checkout</button>
-            </form>
-        </div>
+
+    </div>
+
+    <div>
+        @if($cartItems->count() > 0)
+        <form action="{{ route('checkout') }}" method="POST">
+            @csrf
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
+            <button class="btn-checkout" type="submit">Checkout</button>
+        </form>
+        @endif
     </div>
 
 </div>
@@ -83,13 +87,7 @@
         display: inline;
     }
 
-    .container-buttons {
-        display: flex;
-        justify-content: end;
-        align-items: end;
-        margin-top: 50px;
 
-    }
 
     .btn-checkout {
         width: auto;
@@ -100,10 +98,11 @@
         font-size: small;
         margin: 10px;
         float: right;
-    }
-
-    .btn-checkout {
         background-color: #001a3f;
         color: white;
     }
+
+
+
+
 </style>
