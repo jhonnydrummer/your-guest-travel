@@ -8,9 +8,9 @@
     @csrf
     <button type="submit" class="btn btn-favorite">
         @if($product->isFavoritedByUser(auth()->user()))
-            <i class="fas fa-heart" style="color: red;"></i> <!-- Se favoritado, ícone preenchido -->
+            <i class="fas fa-heart" style="color: red;"></i>
         @else
-            <i class="far fa-heart" style="color: white;"></i> <!-- Se não favoritado, ícone vazio -->
+            <i class="far fa-heart" style="color: white;"></i>
         @endif
     </button>
 </form>

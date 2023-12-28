@@ -36,7 +36,7 @@ use App\Models\User;
                 <form method="POST" action="{{ route('users.destroy', ['user' => $user->id]) }}" id="deleteForm">
                     @csrf
                     @method('DELETE')
-                    <button onclick="return confirm('Deseja realmente excluir?')" type="submit" class="btn_excluir">Excluir</button>
+                    <button onclick="return confirm('Deseja realmente excluir {{$user->name}}?')" type="submit" class="btn_excluir">Excluir</button>
                 </form>
 
             </td>

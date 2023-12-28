@@ -47,4 +47,21 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         //'password' => 'hashed',
     ];
+
+
+
+    public function favorites(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'favorites', 'user_id', 'product_id')->withTimestamps();
+    }
+
+    public function favoriteProducts(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'favorites')->withTimestamps();
+    }
+
+    public function cartItems(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CartItems::class);
+    }
 }

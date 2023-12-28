@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('payment_id');
             $table->unsignedBigInteger('invoice_id');
             $table->timestamps();
 
@@ -26,9 +25,6 @@ return new class extends Migration
             $table->foreign('product_id', 'products_id_fk')
                 ->references('id')
                 ->on('products');
-            $table->foreign('payment_id', 'payment_id_fk')
-                ->references('id')
-                ->on('payments');
             $table->foreign('invoice_id', 'invoice_id_fk')
                 ->references('id')
                 ->on('invoices');

@@ -12,11 +12,15 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
-
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+<?php
+use App\Models\Category;
+
+$categories = Category::all();
+?>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
@@ -26,39 +30,22 @@
             </a>
             @if(auth()->check())
                 <div>
-                    <ul class="nav justify-content-center">
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/home">
-                                <img class="icones-top" src="{{ asset('img/home.png') }}" alt="icon-home">
-                            </a>
-                            <a>Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <img class="icones-top" src="{{ asset('img/sports.png') }}" alt="icon-sports">
-                            </a>
-                            <a>Esportes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <img class="icones-top" src="{{ asset('img/natureza.png') }}" alt="icon-natureza">
-                            </a>
-                            <a>Natureza</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <img class="icones-top" src="{{ asset('img/food.png') }}" alt="icon-food">
-                            </a>
-                            <a>Culinária</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <img class="icones-top" src="{{ asset('img/cultura.png') }}" alt="icon-cultura">
-                            </a>
-                            <a>Cultura</a>
-                        </li>
-                    </ul>
+                    <form action="{{ route('products.filterByCategory') }}" method="POST">
+                        @csrf
+                        <div class="input-group">
+                            <label>
+                                <select class="my-select" name="category_id">
+                                    <option value="" selected>Todas as categorias</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </label>
+                            <div class="input-group-append" style="margin-left: 10px">
+                                <button class="btn-Buscar" type="submit">Pesquisar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
             @endif
@@ -146,7 +133,7 @@
                                     @if(auth()->user()->is_admin)
                                         <a class="dropdown-item" href="/admin/home" style="text-decoration: none">Dashboard</a>
                                     @else
-                                        <a class="dropdown-item" href="minhaConta" style="text-decoration: none">Minha
+                                        <a class="dropdown-item" href="/minhaConta" style="text-decoration: none">Minha
                                             Conta</a>
                                     @endif
                                 </div>
@@ -236,4 +223,21 @@
         font-size: small;
         text-decoration: none;
     }
+    .my-select{
+        height: 40px;
+        width: 30vw;
+        border: 1px solid #adadad;
+    }
+    .btn-Buscar{
+        height: 40px;
+        background-color: #0B5ED7;
+        border: none;
+        border-radius: 5px;
+        color: white;
+    }
+
+    .btn-Buscar:hover{
+        background-color: #0648a8;
+    }
+
 </style>

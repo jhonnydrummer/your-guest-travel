@@ -1,12 +1,15 @@
 @extends('layouts.app')
-<title>Dashboard</title>
 
 @section('content')
+
+<title>Minha Conta</title>
+
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">DASHBOARD</div>
+                    <div class="card-header">MINHA CONTA</div>
                     <div class="card-body">
                         @if(session('success'))
                             <div class="alert alert-success">
@@ -23,26 +26,19 @@
                         <div class="container-button">
                             <p>
                                 <a class="btn-inserir-produto" data-bs-toggle="collapse" href="#multiCollapseExample1"
-                                   role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Inserir
-                                    Produtos</a>
+                                   role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Editar Perfil</a>
                             </p>
 
                             <p>
                                 <a class="btn-listar-produto" data-bs-toggle="collapse"
                                    href="#multiCollapseExample2" role="button" aria-expanded="false"
-                                   aria-controls="multiCollapseExample2">Listar Produtos</a>
+                                   aria-controls="multiCollapseExample2">Histórico de Compras</a>
                             </p>
 
                             <p>
                                 <a class="btn-usuario" data-bs-toggle="collapse"
                                    href="#multiCollapseExample3" role="button" aria-expanded="false"
-                                   aria-controls="multiCollapseExample3">Usuários</a>
-                            </p>
-
-                            <p>
-                                <a class="btn-editar-perfil" data-bs-toggle="collapse"
-                                   href="#multiCollapseExample4" role="button" aria-expanded="false"
-                                   aria-controls="multiCollapseExample4">Editar meu Perfil</a>
+                                   aria-controls="multiCollapseExample3">Favoritos</a>
                             </p>
 
 
@@ -52,7 +48,8 @@
                                 <div class="col">
                                     <div class="collapse multi-collapse" id="multiCollapseExample1">
                                         <div class="card card-body">
-                                            @include('partials.upload')
+                                            @include('partials.minhaConta.perfil')
+                                            @include('partials.users.excluirConta')
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +59,7 @@
                                 <div class="col">
                                     <div class="collapse multi-collapse" id="multiCollapseExample2">
                                         <div class="card card-body">
-                                            @include('exibeTabelaProducts')
+                                           @include('partials.botaoEmitirFatura')
                                         </div>
                                     </div>
                                 </div>
@@ -72,19 +69,7 @@
                                 <div class="col">
                                     <div class="collapse multi-collapse" id="multiCollapseExample3">
                                         <div class="card card-body">
-                                            <strong>Lista de Usuários</strong>
-                                            @include('partials.users.listUsers')
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="collapse multi-collapse" id="multiCollapseExample4">
-                                        <div class="card card-body">
-                                            @include('partials.minhaConta.perfil')
-                                            @include('partials.users.excluirConta')
+                                            @include('partials.users.listFavoritos')
                                         </div>
                                     </div>
                                 </div>
@@ -106,27 +91,16 @@
         display: flex;
         justify-content: center;
     }
-
-    p{
+    p a{
+        text-decoration: none;
         padding: 10px;
         border: none;
         border-radius: 100px;
         background-color: #001a3f;
         color: white;
     }
-    p:hover{
-        background-color: #043b88;
-    }
-    .btn-usuario, .btn-editar-perfil, .btn-inserir-produto, .btn-listar-produto{
+    .btn-usuario{
         width: 150px;
-        color: white;
-        text-decoration: none;
-    }
-
-    .btn-usuario:hover, .btn-editar-perfil:hover, .btn-inserir-produto:hover, .btn-listar-produto:hover{
-        width: 150px;
-        color: white;
-        text-decoration: none;
     }
 
     .collapse {
@@ -151,5 +125,6 @@
         background-color: #0B5ED7;
         color: white;
     }
+
 </style>
 

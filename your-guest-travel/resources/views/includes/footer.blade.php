@@ -1,14 +1,16 @@
 <footer>
-    <p>Dione Arantes - 40395 - 2023</p>
+    <p>All Rights reserved - Dione Arantes - 40395 - 2023</p>
 </footer>
 
 <style>
     footer{
-        display: flex;
-        justify-content: center;
-        background-color: #919191;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        background-color: #001A3F;
         margin-bottom: 0;
-        padding-bottom: 50px;
-        padding-top: 50px;
+        padding-bottom: 20px;
+        padding-top: 30px;
+        color: white;
     }
 </style>

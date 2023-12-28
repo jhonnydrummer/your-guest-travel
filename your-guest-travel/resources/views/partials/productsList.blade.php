@@ -30,7 +30,9 @@
                 <p>Disponibilidade: {{ $product->sku }}</p>
             </label>
             <div class="btn-verMais_addCarrinho">
-            <button type="submit" class="btn_ver_mais" id="btn_ver_mais">Ver mais</button>
+                <button type="button" class="btn_ver_mais" data-toggle="modal" data-target="#staticBackdrop">
+                    Ver mais
+                </button>
             <form method="POST" action="{{ route('cart.add') }}">
                 @csrf
                 <input type="hidden" name="product_id" value="{{$product->id}}">
@@ -43,21 +45,28 @@
     @endforeach
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <style>
-
-
-
         .heart-favorites{
             display: flex;
             position: relative;
             float: right;
         }
 
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
+
         .name_product{
             background-color: black;
             color: white;
@@ -65,10 +74,7 @@
             font-size: medium;
         }
 
-        .image-item {
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
+
 
         .image-item img {
             max-width: 100%;
@@ -82,13 +88,14 @@
 
 
         .product {
+            display: inline-grid;
             border: 1px solid #e0e0e0;
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             padding: 15px;
             width: 250px;
+            min-height: 350px;
             margin: 10px;
-            display: block;
             background-color: white;
         }
 
@@ -111,7 +118,7 @@
             justify-content: space-between;
         }
 
-        .product #btn_ver_mais {
+        .btn_ver_mais {
             width: 100px;
             height: 40px;
             background-color: #0B5ED7;
@@ -122,7 +129,7 @@
             cursor: pointer;
         }
 
-        .product btn_ver_mais:hover {
+         .btn_ver_mais:hover {
             background-color: #2980b9;
         }
 
@@ -145,5 +152,4 @@
         button p{
             font-size: small;
         }
-
  </style>
