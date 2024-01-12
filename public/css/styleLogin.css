@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow: hidden;
+    background-image: url('../img/fundo-registo-login.jpg');
+    rotate: x;
+    background-size: cover;
+}
+
+.total{
+    width: 50%;
+}
+
+.card{
+    display: block;
+    justify-content: center;
+}
+
+img{
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 5%;
+    margin-bottom: 20px;
+}
+
+.roww{
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+.row .btn_login{
+    width: 45%;
+    height: 40px;
+    background-color: #222FE6;
+    color: white;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 5%;
+}
+
+.row .btn_login:hover{
+    background-color: #111773;
+}
+
+.nao_tenho_conta_link{
+    margin-left: 67%;
+}
+
+.form-check-label{
+    margin-left: 0;
+}
+

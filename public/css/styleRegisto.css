@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow: hidden;
+    background-image: url('../img/fundo-registo-login.jpg');
+    background-size: cover;
+}
+
+.card{
+    display: flex;
+    justify-content: center;
+}
+
+img{
+   width: 30%;
+    margin-left: 35%;
+    margin-top: 5%;
+    margin-bottom: 20px;
+}
+
+.roww{
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.btn_registar{
+    width: 48%;
+    height: 40px;
+    background-color: #222FE6;
+    color: white;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 1%;
+}
+
+.btn_registar:hover{
+    background-color: #111773;
+}
+
+.fazer_login_link{
+    margin-left: 43%;
+}
+
